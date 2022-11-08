@@ -1,32 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import './HomePage.dart';
 import './MenuPage.dart';
 import './CartPage.dart';
 import './OrdersPage.dart';
 import './ProfilePage.dart';
 
-class IndexPage extends StatefulWidget {
-  const IndexPage({super.key});
+import 'package:get/get.dart';
+import '../controller/IndexPageController.dart';
+import '../widget/BottomTabBar.dart';
 
-  @override
-  State<IndexPage> createState() => _IndexPageState();
-}
+class IndexPage extends StatelessWidget {
+  IndexPage({super.key});
 
-class _IndexPageState extends State<IndexPage> {
-  int indexSelected = 1;
+  final IndexPageController _indexPageController =
+      Get.put(IndexPageController());
 
   List pages = [
-    HomePage(),
-    MenuPage(),
-    CartPage(),
-    OrdersPage(),
-    ProfilePage()
+    const HomePage(),
+    const MenuPage(),
+    const CartPage(),
+    const OrdersPage(),
+    const ProfilePage()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[indexSelected],
+      body: Obx(
+        () => pages[_indexPageController.tabIndexSelcted.value],
+      ),
+      bottomNavigationBar: BottomTabBar(),
     );
   }
 }
