@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import './user/Login.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -19,30 +21,32 @@ class ProfilePage extends StatelessWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: <
             Widget>[
           Padding(
-            padding: const EdgeInsets.all(15),
-            child: Container(
-              color: const Color(0XFFFFFFFF),
-              height: 220,
-              child: Center(
-                  child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const <Widget>[
-                  CircleAvatar(
-                      backgroundColor: Color(0XFFFFA200),
-                      radius: 40,
-                      child: Icon(
-                        Icons.person,
-                        color: Color(0XFFFFFFFF),
-                      )),
-                  SizedBox(
-                    height: 25.0,
-                  ),
-                  Text('wenlong.hu91@gmail.com')
-                ],
+              padding: const EdgeInsets.all(15),
+              child: InkWell(
+                onTap: () => Get.to(Login()),
+                child: Container(
+                  color: const Color(0XFFFFFFFF),
+                  height: 220,
+                  child: Center(
+                      child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const <Widget>[
+                      CircleAvatar(
+                          backgroundColor: Color(0XFFFFA200),
+                          radius: 40,
+                          child: Icon(
+                            Icons.person,
+                            color: Color(0XFFFFFFFF),
+                          )),
+                      SizedBox(
+                        height: 25.0,
+                      ),
+                      Text('wenlong.hu91@gmail.com')
+                    ],
+                  )),
+                ),
               )),
-            ),
-          ),
           const Card(
             child: ListTile(
                 leading: Icon(Icons.my_library_books),

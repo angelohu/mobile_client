@@ -39,6 +39,7 @@ dependencies:
   flutter_dotenv: ^5.0.2
   get: ^4.6.5
   http: ^0.13.5
+  flutter_login: ^4.0.0
 
 dev_dependencies:
   flutter_test:
