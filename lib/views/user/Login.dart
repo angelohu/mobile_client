@@ -8,18 +8,46 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FlutterLogin(
-        title: 'RISTOE',
-        onLogin: (_) => null,
-        onSignup: (_) => null,
-        onSubmitAnimationCompleted: () {},
-        onRecoverPassword: (_) => null,
-        theme: LoginTheme(
-            primaryColor: const Color(0XFFF9F9FF),
-            accentColor: Colors.orange,
-            buttonTheme:
-                const LoginButtonTheme(backgroundColor: Color(0XFFFFA200))),
-      ),
-    );
+        body: Stack(
+      children: <Widget>[
+        FlutterLogin(
+          title: 'RISTOE',
+          onLogin: (_) => null,
+          onSignup: (_) => null,
+          onSubmitAnimationCompleted: () {},
+          onRecoverPassword: (_) => null,
+          messages: LoginMessages(
+            userHint: 'Email',
+            passwordHint: 'Password',
+            confirmPasswordHint: 'Conferma',
+            loginButton: 'ACCEDI',
+            signupButton: 'REGISTRATTI',
+            forgotPasswordButton: 'dimenticato password?',
+            recoverPasswordButton: 'Invia',
+            goBackButton: 'Indietro',
+            confirmPasswordError: 'Password non corrisponde!',
+            recoverPasswordDescription: '',
+            recoverPasswordSuccess: 'Password salvata con successo',
+          ),
+          theme: LoginTheme(
+              primaryColor: const Color(0XFFFFA200),
+              pageColorLight: const Color(0XFFF9F9FF),
+              pageColorDark: const Color(0XFFF9F9FF),
+              accentColor: const Color(0XFFFFA200),
+              buttonTheme: const LoginButtonTheme(
+                backgroundColor: Color(0XFFFFA200),
+              )),
+        ),
+        Positioned(
+            height: 160,
+            width: 120,
+            child: IconButton(
+                onPressed: () => Get.back(),
+                icon: const Icon(
+                  Icons.chevron_left,
+                  color: Color(0XFF191C24),
+                )))
+      ],
+    ));
   }
 }
