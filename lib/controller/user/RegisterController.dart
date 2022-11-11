@@ -9,15 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class RegisterController extends GetxController {
   Duration get loginTime => const Duration(milliseconds: 100);
 
-  bool _isAuth = false;
-  bool get isAuth => _isAuth;
-
-  var _userEmail = '';
-
-  String get userEmail => _userEmail;
-
   Future<String?> authUser(LoginData data) async {
-    final prefs = await SharedPreferences.getInstance();
     return Future.delayed(loginTime).then((_) async {
       var url = Uri.https(dotenv.get('API_URL'), '/appapi/users/login');
       var response = await http.post(url, body: {
@@ -34,20 +26,9 @@ class RegisterController extends GetxController {
 
       var user = responseData['data'];
 
+      final prefs = await SharedPreferences.getInstance();
       await prefs.setString('token', user['token']);
       await prefs.setString('userEmail', user['email']);
-      _isAuth = true;
-      update();
-      return null;
     });
-  }
-
-  @override
-  void onInit() async {
-    super.onInit();
-    final prefs = await SharedPreferences.getInstance();
-    _userEmail = await prefs.getString('userEmail')!;
-    print(_userEmail);
-    update();
   }
 }

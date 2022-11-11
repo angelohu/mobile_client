@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import './user/Login.dart';
-import '../controller/user/RegisterController.dart';
+import '../controller/user/ProfileController.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
-  final RegisterController _registerController = Get.put(RegisterController());
+  final ProfileController _profileController = Get.put(ProfileController());
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +44,9 @@ class ProfilePage extends StatelessWidget {
                       const SizedBox(
                         height: 25.0,
                       ),
-                      _registerController.isAuth
-                          ? const Text('Accedi')
-                          : Text(_registerController.userEmail)
+                      Obx(() => Text(_profileController.userEmail.isEmpty
+                          ? 'Accedi'
+                          : _profileController.userEmail.value))
                     ],
                   )),
                 ),
