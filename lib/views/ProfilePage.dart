@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import './user/Login.dart';
+import '../controller/user/RegisterController.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  ProfilePage({super.key});
+  final RegisterController _registerController = Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -31,18 +33,20 @@ class ProfilePage extends StatelessWidget {
                       child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const <Widget>[
-                      CircleAvatar(
+                    children: <Widget>[
+                      const CircleAvatar(
                           backgroundColor: Color(0XFFFFA200),
                           radius: 40,
                           child: Icon(
                             Icons.person,
                             color: Color(0XFFFFFFFF),
                           )),
-                      SizedBox(
+                      const SizedBox(
                         height: 25.0,
                       ),
-                      Text('wenlong.hu91@gmail.com')
+                      _registerController.isAuth
+                          ? const Text('Accedi')
+                          : Text(_registerController.userEmail)
                     ],
                   )),
                 ),

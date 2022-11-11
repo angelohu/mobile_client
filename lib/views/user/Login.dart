@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_login/flutter_login.dart';
+import '../../controller/user/RegisterController.dart';
 
 class Login extends StatelessWidget {
-  const Login({super.key});
+  Login({super.key});
+
+  final RegisterController _registerController = Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +15,9 @@ class Login extends StatelessWidget {
       children: <Widget>[
         FlutterLogin(
           title: 'RISTOE',
-          onLogin: (_) => null,
+          onLogin: _registerController.authUser,
           onSignup: (_) => null,
-          onSubmitAnimationCompleted: () {},
+          onSubmitAnimationCompleted: () => Get.back(),
           onRecoverPassword: (_) => null,
           messages: LoginMessages(
             userHint: 'Email',

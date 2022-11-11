@@ -21,7 +21,7 @@ class IndexPage extends StatelessWidget {
     const MenuPage(),
     const CartPage(),
     const OrdersPage(),
-    const ProfilePage()
+    ProfilePage()
   ];
 
   @override
