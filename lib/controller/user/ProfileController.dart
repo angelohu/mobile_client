@@ -12,10 +12,16 @@ class ProfileController extends GetxController {
 
   isAuth() async {
     final prefs = await SharedPreferences.getInstance();
-
     userEmail(prefs.getString('userEmail'));
-    print(userEmail);
-    print(prefs.getString('token') != null);
     return prefs.getString('token') != null;
+  }
+
+  logOut() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    await prefs.remove('userEmail');
+    await prefs.remove('token');
+    userEmail(null);
+    update();
   }
 }

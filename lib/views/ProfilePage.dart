@@ -80,12 +80,13 @@ class ProfilePage extends StatelessWidget {
           ),
           const Card(
             child: ListTile(
-                leading: Icon(Icons.exit_to_app),
-                title: Text(
-                  'Esci',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                trailing: Icon(Icons.chevron_right, color: Color(0XFFFFA200))),
+              leading: Icon(Icons.exit_to_app),
+              title: Text(
+                'Esci',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              trailing: Icon(Icons.chevron_right, color: Color(0XFFFFA200)),
+            ),
           ),
         ]),
       ),
