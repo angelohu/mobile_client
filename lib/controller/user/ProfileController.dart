@@ -1,7 +1,10 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import './RegisterController.dart';
+import 'package:get/get.dart';
 
 class ProfileController extends GetxController {
+  RegisterController _registerController = Get.find();
   var userEmail = ''.obs;
 
   @override
@@ -22,7 +25,7 @@ class ProfileController extends GetxController {
 
     await prefs.remove('userEmail');
     await prefs.remove('token');
-    userEmail();
+    userEmail(null);
     update();
   }
 }
