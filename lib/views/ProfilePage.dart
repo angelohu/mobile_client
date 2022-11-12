@@ -78,14 +78,16 @@ class ProfilePage extends StatelessWidget {
                 ),
                 trailing: Icon(Icons.chevron_right, color: Color(0XFFFFA200))),
           ),
-          const Card(
+          Card(
             child: ListTile(
-              leading: Icon(Icons.exit_to_app),
-              title: Text(
+              onTap: () => _profileController.logOut(),
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text(
                 'Esci',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-              trailing: Icon(Icons.chevron_right, color: Color(0XFFFFA200)),
+              trailing:
+                  const Icon(Icons.chevron_right, color: Color(0XFFFFA200)),
             ),
           ),
         ]),
